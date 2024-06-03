@@ -1,0 +1,87 @@
+What is object detection?
+- object localization
+    tell what the object is 
+    give a bounding box for the object
+- object detection
+    find what and where multiple objects are in an image
+
+- in a cat in dog localization, we would pass the image through a CNN and have 6 output nodes:
+    CAT, DOG, x1, y1, x2, y2 
+    the coordinates are for defining the bounding box corner points
+
+- localization is relatively easy but it is difficult to generalize this for multiple objects in an image
+
+- Object detection approaches:
+    - sliding window slides box across image and when it detects the object it leaves a box there and
+    continues sliding through the image
+        - Issue is this requires lots of computation because the box may move one pixel at a time which
+            would require lots of inference from the CNN
+        - Also need to run different sized boxeds simultaneously
+        - The sliding process can also be done by the neural net instead of manually feeding each crop
+            - unfortunately this is still compute intensive.
+    - regional based network
+        1. imput image 
+        2. extract region proposals (~2k)
+        3. warp regions to one size
+        4. compute CNN features
+        5. classify regions
+            Issues:
+            - still slow
+            - difficult to implement
+    - yolo algorithm (you only look once)
+        1. split image into n x n grid
+        2. create class probability map
+        3. create bounding boxes + confidence
+        4. Final detections 
+            - fastest option
+
+Intersection Over Union:
+    - a metric for how to measure how good a bounding box is.
+    - IoU = (Area of intersection)/(Area of Union)
+    - IoU > 0.5 "decent"
+    - IoU > 0.7 "pretty good"
+    - IoU > 0.9 "almost perfect, as good as it gets"
+    To calculate:
+    - remember for images the orgin is the top left corner (0,0)
+    Given:
+    Box1 = [x1, y1, x2, y2]
+    Box2 = [xx1, yy1 ,xx2, yy2]
+    x1 may be the max of box1[0],box2[0]
+    yy1 may be the max of box1[1],box2[1]
+    x2 may be the min of box1[2],box2[2]
+    y2 may be the min of box1[3],box2[3]
+
+    code: see IoU.py
+
+Cleaning Up Bounding Box Predictions: Non Max Suppression
+    - Bounding boxes are passed through CNN and have probability from 0 to 1
+    - pick the highest probability box and second highest and calculate the IoU between them
+    - if the IoU is higher than a given threshold, remove the lower probability box
+    - repeat for the next highest probability box with the highest
+
+    Steps:
+        1. discard bounding boxes < probability threshold
+        2. While bounding boxes:
+            take out the largest probability box
+            remove all other boxes with IoU > threshold
+        3. Do this for each class of objects seperately 
+
+Mean Average Precision: 
+    - The most common metric used in Deep Learning to evaluate object 
+        detection models
+    Steps:
+    1. Get all bounding box predictions on our test set
+        Sort true positives and false positives
+    2. Sort by descending confidence score
+    3. Two metrics: Precision and Recall
+        Precision is true positives divided by true positives plus true negatives
+        of all the bounding box predictions made, which fraction is correct
+
+        Recall is the true positives divided by the true positives and the false negatives
+        of all of the target bounding boxes what fraction did we correctly detection
+    4. Plot the Precision-Recall graph
+    5. The area under this graph is the average precision
+    6. Repeat this calculation for all object classes of the model
+    7. Average the precisions for all the object classes for the mean average precision (mAP)
+    8. Repeat all the previous computations for multiple different IoU thresholds
+    9. Then average all of the mAP at the different IoU thresholds to calculate the final mAP
