@@ -1,0 +1,2 @@
+These notes correlate with this freeCodeCampe.org video:
+https://www.youtube.com/watch?v=rfscVS0vtbw&t=2719s
