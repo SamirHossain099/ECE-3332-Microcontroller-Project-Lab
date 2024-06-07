@@ -1,0 +1,23 @@
+https://colab.research.google.com/drive/1F_EWVKa8rbMXi3_fG0w7AtcscFq7Hi7B#forceEdit=true&sandboxMode=tru
+Two main components: 
+Graphs:
+    a variable gets added to the graph and the graph lets say is the summation 
+    of two other variables. It does execute the computation, it just states that
+    this is the computation to be done for a particular variable.
+
+    Its basically stating the equation but not evaluating it. They are partial computations.
+    
+    It is called a graph because different computations can be related to one another. 
+
+Sessions:
+    A session is a way of executing part or the entire graph.
+    Start at the portion of the graph where only constants are tied to the graph
+    and then work through the dependances.
+
+Tensors:
+    A tensor is a generalization of vectors and matrices to potentially higher dimensions.
+    Each tensor represents a partially defined computation that will eventually produce a value. 
+    TensorFlow programs work by building a graph of tensor objects that detail how tensors are related. 
+    Each tensor has a data type and a shape.
+    Data types include: float32, int32, string, and others
+    Shape: represents the dimension of data 

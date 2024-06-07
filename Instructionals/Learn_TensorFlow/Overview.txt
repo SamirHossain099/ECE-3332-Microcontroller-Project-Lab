@@ -1,0 +1,53 @@
+Video: https://www.youtube.com/watch?v=tPYj3fFJGjk
+Artificial Intelligence vs Neural Networks vs Machine Learning:
+
+    Artificial Intelligence (AI):
+    Formal definition: The effort to automate intellectual tasks normally performed by humans
+    - Can be simple or complex 
+        Ex: A bunch of rules put together to tell a chess bot what to do
+        Ex: Path finding algorithm
+        - These are still simulating some intellectual human behavior
+
+    Machine Learning (ML):
+    - A part of AI
+    - Machine learning figures out the rules for us when given some data.
+    - Rather than giving the program rules, an algorithm finds the rules for us. 
+        - We don't necessarily know what rules it comes up with
+    - Will have an input layer, and 1 or 2 rules layer, and then output layer
+
+    Neural Networks:
+    - A form of machine learning that uses a layered reppresentation of data.
+    - Will have an input layer, multiple rules layers, and then an output layer.
+    - The "Deep Learning" neural networks have multiple layers.
+    - Layer representation of data.
+    - NOT modeled aftered the brain. 
+
+Data:
+
+    Features vs Lables:
+    Features:
+    - Features are the input information that we will always have to we give to the model to get some output
+
+    Labels:
+    - Lables are the output information what we are trying to predict
+
+Types of Machine Learning:
+
+    Supervised Learning:
+    - We have some features and they correspond to some labels.
+    - We pass the information to some machine learning model, it finds the rules for us and in the future we can just 
+    pass features and get labels.
+    - Its called supervised learning because when we pass the features, it makes an arbitrary prediction at first.
+    Then it compares it's answer to the lable and tweaks its rules for the next pass of the features.
+    - The most common type of learning
+    - Advantageous when we have lots of training data
+
+    Unsupervised Learning:
+    - When we only have features and have no labels
+    - Want the model to find the output for you
+    - Ex: Clustering data points: There is a graph of two axises with clusters of data points. The model finds the clusters.
+
+    Reinforcement Learning:
+    - No data, there is an agent, environment, and reward.
+    - The agent moves in an environment and wants to move toward a target output with the highest reward.
+    - The agent tried to maximize the rewards as it explores the environment. 
