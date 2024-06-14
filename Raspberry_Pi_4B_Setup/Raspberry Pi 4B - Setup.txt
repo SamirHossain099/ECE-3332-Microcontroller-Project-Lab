@@ -13,6 +13,9 @@ python3 -m venv --system-site-packages env ## env in the end is the name of the 
 -----------Activate Virtual Environment---------------
 source env/bin/activate
 
+----------Deactivate Vitual Environment---------------
+Deactivate
+
 -------------Install OpenCV---------------------------
 cd .. ##get out of any folder
 pip3 install opencv-contrib-python
