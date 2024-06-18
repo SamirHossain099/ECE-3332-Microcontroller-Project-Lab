@@ -9,18 +9,18 @@ ret, frame2 = cap.read()
 while cap.isOpened():
     diff = cv.absdiff(frame1,frame2) #finds difference between two frames
     gray = cv.cvtColor(diff, cv.COLOR_BGR2GRAY) #easier to find contours in grayscale mode
-    blur = cv.GaussianBlur(gray, (5,5), 0)
+    blur = cv.GaussianBlur(gray, (21,21), 0)
     #_,thresh = cv.threshold(blur, 20, 255, cv.THRESH_BINARY)
-    thresh = cv.adaptiveThreshold(blur,40,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY, 47,1)
+    thresh = cv.adaptiveThreshold(blur,20,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY, 47,1)
     dilated = cv.dilate(thresh, None, iterations=3)
-    contours, _ = cv.findContours(dilated, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv.findContours(dilated, cv.CHAIN_APPROX_SIMPLE, cv.CHAIN_APPROX_SIMPLE) #change RETR_TREE to CHAIN_APPROX_SIMPLE
     #cv.drawContours(frame1, contours, -1, (255,0,0), 2) #just display contours on screen
     for contour in contours:
         #save coordinates of contours
         (x,y,w,h) = cv.boundingRect(contour)
         #find area of contour and say if area is smaller than area of a person, we dont want to draw a rectangle
         #if area larger than a persons area, draw a rectangle.
-        if cv.contourArea(contour) < 1500:
+        if cv.contourArea(contour) < 2500:
             continue
         cv.rectangle(frame1, (x,y),(x+w,y+h),(255,0,0),thickness=2)
         crop = frame1[y:y+h, x:x+w]
