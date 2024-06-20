@@ -7,7 +7,7 @@ from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 import urllib
 
-video_file = "/Users/nicholasrethans/Documents/GitHub/ECE-3332-Microcontroller-Project-Lab/Instructionals/ObjectTracking/Test Car Video.mp4"
+video_file = "/Users/nicholasrethans/Documents/GitHub/ECE-3332-Microcontroller-Project-Lab/Instructionals/ObjectTracking/TrimedTestCarVideo.mp4"
 def drawRectangle(frame, bbox):
     p1 = (int(bbox[0]), int(bbox[1]))
             # x             y
@@ -29,7 +29,7 @@ def drawText(frame, txt, location, color = (50,170,50)):
 tracker_types = ['BOOSTING','MIL','KCF','CSRT','TLD','MEDIANFLOW','GOTURN','MOSSE']
 
 #Change the index to change the tracker type
-tracker_type = tracker_types[0]
+tracker_type = tracker_types[5]
 
 if tracker_type == 'BOOSTING':
     tracker = cv.legacy.TrackerBoosting.create()
