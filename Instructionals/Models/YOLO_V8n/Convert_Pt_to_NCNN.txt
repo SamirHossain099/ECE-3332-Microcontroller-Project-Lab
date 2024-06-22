@@ -1,0 +1,29 @@
+Follow this if you want https://docs.ultralytics.com/integrations/ncnn/#export-to-ncnn-converting-your-yolov8-model
+
+OR 
+
+Instructions below
+
+#If you don't already have Ultralytics installed in your virtual environment 
+#then install it by the command below in your venv else skip
+# Install the required package for YOLOv8
+pip install ultralytics
+
+#Create a python script in the folder where your pytorch model is by
+
+nano convertmodel.py # nano = create file, 'convertmodel' is the name
+OR
+#write click on the folder and create a file
+
+# Paste this code in the file
+------------------------------------------------------------
+from ultralytics import YOLO
+
+# Load the YOLOv8 model
+model = YOLO("yolov8n.pt")
+
+# Export the model to NCNN format
+model.export(format="ncnn")  # creates '/yolov8n_ncnn_model'
+---------------------------------------------------------------
+
+#Run it to convert pytorch model to ncnn
