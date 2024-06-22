@@ -1,9 +1,11 @@
 import cv2 as cv
 import numpy as np
-
+import time
 cap = cv.VideoCapture(0)
 ret, frame1 = cap.read()
 ret, frame2 = cap.read()
+new_frame_time = 0
+prev_frame_time = 0
 
 while cap.isOpened():
     diff = cv.absdiff(frame1,frame2) #finds difference between two frames
@@ -21,10 +23,15 @@ while cap.isOpened():
         if cv.contourArea(contour) < 800:
             continue
         cv.rectangle(frame1, (x,y),(x+w,y+h),(255,0,0),thickness=2)
-        cv.putText(frame1,"Status: {}".format('Movement'),(10,20),cv.FONT_HERSHEY_SIMPLEX,1, (0,0,255),3)
+        #cv.putText(frame1,"Status: {}".format('Movement'),(10,20),cv.FONT_HERSHEY_SIMPLEX,1, (0,0,255),3)
 
     #Contour overlay, but no noise removal at this point
-
+    new_frame_time = time.time()
+    fps = 1/(new_frame_time-prev_frame_time)
+    prev_frame_time = new_frame_time
+    fps = int(fps)
+    fps = str(fps)
+    cv.putText(frame1, fps, (7,70), cv.FONT_HERSHEY_SIMPLEX, 1, (100,255,0),3, cv.LINE_AA)
 
     cv.imshow("feed",frame1)
     frame1=frame2

@@ -1,3 +1,10 @@
+ssh-keygen -R <host>
+ssh <local>@<host>
+
+sudo raspi-config --> Interface options --> Enable VNC
+sudo reboot
+hostname
+
 sudo apt update
 sudo apt upgrade -y
 sudo reboot
@@ -19,3 +26,6 @@ Deactivate
 -------------Install OpenCV---------------------------
 cd .. ##get out of any folder
 pip3 install opencv-contrib-python
+
+-----------Run Python Files---------------------------
+python /path/path/PythonFile.py
