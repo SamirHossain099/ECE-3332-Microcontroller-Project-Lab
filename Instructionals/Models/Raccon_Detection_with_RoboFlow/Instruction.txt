@@ -1,0 +1,15 @@
+Make a virtual environment with system site packages, instructions for that in Raspberry Pi 4B Setup folder
+
+cd into the virtual environment
+
+git clone https://github.com/sv2441/Raccoon-Detection-using-YoloV8-and-Roboflow.git
+
+cd Raccoon-Detection-using-YoloV8-and-Roboflow
+
+pip install roboflow
+pip install ultralytics
+
+python app.py #to run their script
+
+#Use raccoondetect.py instead of app.py in this folder to process a video
+#Follow the github that you are cloning for better understanding

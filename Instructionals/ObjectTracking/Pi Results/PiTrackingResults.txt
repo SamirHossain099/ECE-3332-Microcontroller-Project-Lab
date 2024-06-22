@@ -1,0 +1,26 @@
+"""
+2.5 GHz Quad Core Intel Core i7
+640x360 360p resolution
+1. Boosting - avg 61 fps
+2. MIL - avg 19 fps
+3. KCF - avg 583 fps
+4. CRST - avg 34 fps
+5. TLD - avg 38 fps
+6. MEDIANFLOW - avg 745 fps
+7. GOTURN
+The only Deep Learning Based, Most Accurate - Requires Weights download (see 5:23)
+8. MOSSE - avg 8997** fps
+
+1.5 Ghz Broadcom BCM2711 SoC Raspberry Pi 4 B
+
+1. Boosting - avg 22 fps
+2. MIL - avg 7 fps
+3. KCF - avg 168 fps true: ~94 fps
+4. CRST - avg 12 fps
+5. TLD - avg 13 fps
+6. MEDIANFLOW - avg 237 fps true: ~182
+7. GOTURN
+The only Deep Learning Based, Most Accurate - Requires Weights download (see 5:23)
+8. MOSSE - avg 2826 fps **
+
+"""
