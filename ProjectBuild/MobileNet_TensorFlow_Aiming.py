@@ -45,7 +45,7 @@ def move_servo_x(current_position_x, center_x):
         if current_position_x < -1:
             current_position_x = -1
     else:
-        return current_position_x  # Don't move if already centered
+        return current_position_x
     servo_x.value = current_position_x
     return current_position_x
 
@@ -62,7 +62,7 @@ def move_servo_y(current_position_y, center_y):
         if current_position_y < -1:
             current_position_y = -1
     else:
-        return current_position_y  # Don't move if already centered
+        return current_position_y
     servo_y.value = current_position_y
     return current_position_y
 
@@ -73,7 +73,7 @@ class VideoStream:
         self.picam2 = initialize_camera()
         if self.picam2:
             try:
-                self.picam2.stop()  # Ensure camera is stopped before configuring
+                self.picam2.stop()  
                 self.picam2.preview_configuration.main.size = resolution
                 self.picam2.preview_configuration.main.format = "RGB888"
                 self.picam2.preview_configuration.align()
@@ -235,7 +235,7 @@ while True:
             cv2.rectangle(frame, (xmin, label_ymin - labelSize[1] - 10), (xmin + labelSize[0], label_ymin + baseLine - 10), (255, 255, 255), cv2.FILLED)
             cv2.putText(frame, label, (xmin, label_ymin - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
 
-            # Draw center point (optional)
+            # Draw center point
             cv2.circle(frame, (center_x, center_y), 5, (255, 0, 0), -1)  # -1 to fill the circle
 
     
