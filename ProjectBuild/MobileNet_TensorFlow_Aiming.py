@@ -7,6 +7,8 @@ import time
 from threading import Thread
 import importlib.util
 from picamera2 import Picamera2
+from gpiozero.pins.pigpio import PiGPIOFactory
+from gpiozero import Servo
 
 # Initialize the Picamera2
 def initialize_camera():
@@ -20,6 +22,50 @@ def initialize_camera():
     except Exception as e:
         print(f"Error initializing camera: {e}")
         return None
+
+
+# Initialize current position
+current_position_x = 0
+current_position_y = 0
+factory = PiGPIOFactory()
+servo_x = Servo(18, min_pulse_width = 0.5/1000, max_pulse_width = 2.5/1000, pin_factory=factory)
+servo_y = Servo(17, min_pulse_width = 0.5/1000, max_pulse_width = 2.5/1000, pin_factory=factory)
+
+
+# Function to gradually change horizontal servo position
+def move_servo_x(current_position_x, center_x):
+    target_position = 0  # Center position
+    step = 0.02  # Step size for servo movement
+    if center_x < 640:
+        current_position_x += step
+        if current_position_x > 1:
+            current_position_x = 1
+    elif center_x > 640:
+        current_position_x -= step
+        if current_position_x < -1:
+            current_position_x = -1
+    else:
+        return current_position_x  # Don't move if already centered
+    servo_x.value = current_position_x
+    return current_position_x
+
+# Function to gradually change vertical servo position
+def move_servo_y(current_position_y, center_y):
+    target_position = 0  # Center position
+    step = 0.02  # Step size for servo movement
+    if center_y > 360:
+        current_position_y += step
+        if current_position_y > 1:
+            current_position_y = 1
+    elif center_y < 360:
+        current_position_y -= step
+        if current_position_y < -1:
+            current_position_y = -1
+    else:
+        return current_position_y  # Don't move if already centered
+    servo_y.value = current_position_y
+    return current_position_y
+
 
 class VideoStream:
     """Camera object that controls video streaming from the Picamera2"""
@@ -164,11 +210,21 @@ while True:
     scores = interpreter.get_tensor(output_details[scores_idx]['index'])[0]
 
     for i in range(len(scores)):
-        if (scores[i] > min_conf_threshold) and (scores[i] <= 1.0):
+        if (scores[i] > min_conf_threshold) and (scores[i] <= 1.0) and labels[int(classes[i])] == 'cell phone':
             ymin = int(max(1, (boxes[i][0] * imH)))
             xmin = int(max(1, (boxes[i][1] * imW)))
             ymax = int(min(imH, (boxes[i][2] * imH)))
             xmax = int(min(imW, (boxes[i][3] * imW)))
+            
+            # Calculate center coordinates
+            center_x = int((xmin + xmax) / 2)
+            center_y = int((ymin + ymax) / 2)
+
+            # Print center coordinates
+            print(f"Center coordinates for cell phone {i+1}: ({center_x}, {center_y})")
+            
+            current_position_x = move_servo_x(current_position_x, center_x)
+            current_position_y = move_servo_y(current_position_y, center_y)
 
             cv2.rectangle(frame, (xmin, ymin), (xmax, ymax), (10, 255, 0), 2)
 
@@ -179,6 +235,10 @@ while True:
             cv2.rectangle(frame, (xmin, label_ymin - labelSize[1] - 10), (xmin + labelSize[0], label_ymin + baseLine - 10), (255, 255, 255), cv2.FILLED)
             cv2.putText(frame, label, (xmin, label_ymin - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2)
 
+            # Draw center point (optional)
+            cv2.circle(frame, (center_x, center_y), 5, (255, 0, 0), -1)  # -1 to fill the circle
+
+    
     cv2.putText(frame, 'FPS: {0:.2f}'.format(frame_rate_calc), (30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
 
     cv2.imshow('Object detector', frame)
@@ -190,5 +250,6 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
+pwm_x.stop()
 cv2.destroyAllWindows()
 videostream.stop()
