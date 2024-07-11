@@ -6,8 +6,12 @@ def drawRectangle(frame, bbox, color=(0, 255, 0)):
     cv.rectangle(frame, p1, p2, color, 2)
 
 video = cv.VideoCapture(0)  # calls facecam
-bbox = (590, 310, 100, 100) # x,y,w,h #initial bounding box location (later will be given by yolo)
+#bbox = (590, 310, 100, 100) # x,y,w,h #initial bounding box location (later will be given by yolo) mac center
 ret, frame = video.read()
+print(frame.shape[:2])
+y=(frame.shape[0]//2)-50
+x=(frame.shape[1]//2)-50
+bbox = ((x),(y),100,100)
 if not ret:
     print("Error: Could not read initial frame")
     video.release()

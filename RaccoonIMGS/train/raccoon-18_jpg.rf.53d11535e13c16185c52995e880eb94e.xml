@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>raccoon-18_jpg.rf.53d11535e13c16185c52995e880eb94e.jpg</filename>
+	<path>C:\Users\Nicop\Desktop\Images\HandAnnotated\train\raccoon-18_jpg.rf.53d11535e13c16185c52995e880eb94e.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>240</width>
+		<height>156</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>raccoon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>41</xmin>
+			<ymin>44</ymin>
+			<xmax>180</xmax>
+			<ymax>120</ymax>
+		</bndbox>
+	</object>
+</annotation>
