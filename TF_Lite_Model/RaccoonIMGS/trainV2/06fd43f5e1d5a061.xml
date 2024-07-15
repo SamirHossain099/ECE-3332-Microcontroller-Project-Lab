@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Images</folder>
+	<filename>06fd43f5e1d5a061.jpg</filename>
+	<path>C:\Users\Nicop\Desktop\Images\06fd43f5e1d5a061.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>768</width>
+		<height>768</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>raccoon</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>360</xmin>
+			<ymin>113</ymin>
+			<xmax>768</xmax>
+			<ymax>672</ymax>
+		</bndbox>
+	</object>
+</annotation>

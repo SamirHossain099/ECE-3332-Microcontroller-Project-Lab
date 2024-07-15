@@ -1,0 +1,93 @@
+tflite_env_39\Scripts\activate
+input image size: 1280x720
+
+EfficientDet_Lite0
+Size of train_data: 71
+Size of val_data: 29
+
+4 epochs: 1min 37.4 seconds
+batch size: 4
+{'AP': 0.30882806,
+ 'AP50': 0.89767283,
+ 'AP75': 0.080707714,
+ 'APs': -1.0,
+ 'APm': -1.0,
+ 'APl': 0.31106266,
+ 'ARmax1': 0.33,
+ 'ARmax10': 0.42666668,
+ 'ARmax100': 0.42666668,
+ 'ARs': -1.0,
+ 'ARm': -1.0,
+ 'ARl': 0.42666668,
+ 'AP_/raccoon': 0.30882806}
+
+40 epochs: 14min 2.9s
+batch size: 4
+{'AP': 0.7221417,
+ 'AP50': 0.99250734,
+ 'AP75': 0.8515064,
+ 'APs': -1.0,
+ 'APm': -1.0,
+ 'APl': 0.7315254,
+ 'ARmax1': 0.7366667,
+ 'ARmax10': 0.8066667,
+ 'ARmax100': 0.8066667,
+ 'ARs': -1.0,
+ 'ARm': -1.0,
+ 'ARl': 0.8066667,
+ 'AP_/raccoon': 0.7221417}
+
+80 epochs: 32m 19.9s
+batch size: 4
+{'AP': 0.69884086,
+ 'AP50': 0.97350454,
+ 'AP75': 0.8295609,
+ 'APs': -1.0,
+ 'APm': -1.0,
+ 'APl': 0.70363027,
+ 'ARmax1': 0.7266667,
+ 'ARmax10': 0.79333335,
+ 'ARmax100': 0.79333335,
+ 'ARs': -1.0,
+ 'ARm': -1.0,
+ 'ARl': 0.79333335,
+ 'AP_/raccoon': 0.69884086}
+
+train imgs: 302
+test imgs: 81
+
+100 epochs: 112m 56.2s
+batch size: 4
+{'AP': 0.7253351,
+ 'AP50': 0.97288096,
+ 'AP75': 0.8065235,
+ 'APs': -1.0,
+ 'APm': 0.025,
+ 'APl': 0.73326945,
+ 'ARmax1': 0.7218391,
+ 'ARmax10': 0.7954023,
+ 'ARmax100': 0.8045977,
+ 'ARs': -1.0,
+ 'ARm': 0.1,
+ 'ARl': 0.8127907,
+ 'AP_/raccoon': 0.7253351}
+
+EfficientDet_Lite2 
+train imgs: 302
+test imgs: 81
+
+100 epochs: 1518mins 5.4s
+batch size 8
+{'AP': 0.7509008,
+ 'AP50': 0.9529234,
+ 'AP75': 0.8332056,
+ 'APs': -1.0,
+ 'APm': 0.5,
+ 'APl': 0.75769717,
+ 'ARmax1': 0.7632184,
+ 'ARmax10': 0.84252876,
+ 'ARmax100': 0.85057473,
+ 'ARs': -1.0,  -- indicates the model does not have much training data on smaller images
+ 'ARm': 0.5,   -- indicates the model performs mediocre on medium distance images
+ 'ARl': 0.85465115, -- performs well at close distance images
+ 'AP_/raccoon': 0.7509008}

@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Images</folder>
+	<filename>raccoon-188_jpg.rf.79ba55aba3400cf56f6337bafd863c05.jpg</filename>
+	<path>C:\Users\Nicop\Desktop\Images\raccoon-188_jpg.rf.79ba55aba3400cf56f6337bafd863c05.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>460</width>
+		<height>379</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>raccoon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>37</xmin>
+			<ymin>78</ymin>
+			<xmax>353</xmax>
+			<ymax>333</ymax>
+		</bndbox>
+	</object>
+</annotation>
