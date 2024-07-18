@@ -1,0 +1,19 @@
+pip install ultralytics
+pip uninstall torch && torchvision
+
+
+
+sudo apt-get -y update; 
+sudo apt-get -y install python3-pip libopenblas-dev;
+
+export TORCH_INSTALL=https://developer.download.nvidia.cn/compute/redist/jp/v60dp/pytorch/torch-2.3.0a0+40ec155e58.nv24.03.13384722-cp310-cp310-linux_aarch64.whl
+
+python3 -m pip install --upgrade pip; python3 -m pip install numpy==’1.26.1’; python3 -m pip install --no-cache $TORCH_INSTALL
+
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libopenblas-dev libavcodec-dev libavformat-dev libswscale-dev
+
+git clone --branch v0.18 https://github.com/pytorch/vision torchvision
+cd torchvision
+export BUILD_VERSION=0.x.0  # where 0.x.0 is the torchvision version  
+python3 setup.py install --user
+cd ../  # attempting to load torchvision from build dir will result in import error
