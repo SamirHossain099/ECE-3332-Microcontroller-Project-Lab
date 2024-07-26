@@ -1,0 +1,42 @@
+sudo apt-get update
+sudo apt-get install -y python3.8 python3.8-dev python3.8-venv
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+sudo update-alternatives --config python3
+
+
+sudo apt-get update
+sudo apt-get install -y python3-pip
+pip3 install adafruit-circuitpython-pca9685
+pip3 install adafruit-circuitpython-busdevice
+pip3 install adafruit-platformdetect
+pip3 install adafruit-blinka
+
+
+import time
+import busio
+from adafruit_pca9685 import PCA9685
+from adafruit_motor import servo
+import Jetson.GPIO as GPIO
+
+# Set up the I2C bus
+I2C_BUS_NUMBER = 1  # Typically, I2C bus 1 is used on the Jetson Nano
+i2c = busio.I2C(SCL=GPIO.pin.SCL, SDA=GPIO.pin.SDA, frequency=400000)
+
+# Create a PCA9685 object and set the PWM frequency to 50 Hz
+pca = PCA9685(i2c)
+pca.frequency = 50
+
+# Create a servo object for channel 0
+servo0 = servo.Servo(pca.channels[0])
+
+# Sweep the servo back and forth
+while True:
+    for angle in range(0, 180, 5):
+        servo0.angle = angle
+        time.sleep(0.1)
+    for angle in range(180, 0, -5):
+        servo0.angle = angle
+        time.sleep(0.1)
+
