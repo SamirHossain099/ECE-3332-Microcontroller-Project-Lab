@@ -2,7 +2,7 @@ import cv2
 from roboflow import Roboflow
 
 # Initialize the Roboflow object with an API key
-rf = Roboflow(api_key="IUMgYhpwP7DC1TYcdtDX")
+rf = Roboflow(api_key="")
 
 # Access the specific project and model version
 project = rf.workspace().project("raccoon-detection-bow7l")
