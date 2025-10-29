@@ -211,7 +211,7 @@ This project is for educational purposes. Please respect academic integrity guid
 
 ## 👨‍💻 Author
 
-**Your Name**  
+Samir Hossain  
 ECE-3332 Microcontroller Project Lab  
 Texas Tech University
 
