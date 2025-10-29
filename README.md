@@ -213,7 +213,7 @@ This project is for educational purposes. Please respect academic integrity guid
 
 **Your Name**  
 ECE-3332 Microcontroller Project Lab  
-[Your University]
+Texas Tech University
 
 ## 🙏 Acknowledgments
 
@@ -230,9 +230,8 @@ ECE-3332 Microcontroller Project Lab
 ## 📞 Contact
 
 For questions or collaboration opportunities:
-- **Email**: [your.email@university.edu]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
+- **Email**: samir.hossain@ttu.edu
+- **LinkedIn**: https://www.linkedin.com/in/samirhossain099/
 
 ---
 
